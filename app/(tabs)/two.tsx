@@ -1,9 +1,18 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet } from "react-native";
 
-import EditScreenInfo from '@/components/EditScreenInfo';
-import { Text, View } from '@/components/Themed';
+import EditScreenInfo from "@/components/EditScreenInfo";
+import { Text, View } from "@/components/Themed";
 
-import "../../utilities/hps";
+import { getService } from "../../utilities/hps";
+
+getService()
+  .then((model) => {
+    // model.logger("testing", "Hello!");
+    model.pull();
+  })
+  .catch((e) => {
+    console.log("error", e);
+  });
 
 export default function TabTwoScreen() {
   return (
