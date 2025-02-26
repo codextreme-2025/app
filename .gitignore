@@ -36,3 +36,9 @@ yarn-error.*
 *.tsbuildinfo
 
 /nativewind.d.ts
+
+# android
+/android
+
+# ios
+/ios
