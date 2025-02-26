@@ -1,7 +1,9 @@
 import {
   Absolute3DPosition,
+  Accuracy1D,
   DataFrame,
   DataObject,
+  LengthUnit,
   PullOptions,
   SourceNode,
 } from "@openhps/core";
@@ -39,12 +41,22 @@ export class ExpoGeolocationSourceNode<Out extends DataFrame>
   public async onPull(options?: PullOptions): Promise<Out> {
     const location = await Location.getCurrentPositionAsync({ accuracy: 6 });
 
-    const dataObject = new DataObject();
-    dataObject.position = new Absolute3DPosition(
+    const position = new Absolute3DPosition(
       location.coords.latitude,
       location.coords.longitude,
       location.coords.altitude ?? 0,
     );
+
+    position.accuracy = new Accuracy1D(
+      location.coords.accuracy ?? 0,
+      LengthUnit.METER,
+    );
+
+    const dataObject = new DataObject(
+      this.source.uid + "_" + location.timestamp,
+    );
+    dataObject.position = position;
+
     const dataFrame = new DataFrame(dataObject);
 
     return dataFrame as Out;
