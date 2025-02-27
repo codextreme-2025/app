@@ -5,5 +5,10 @@ module.exports = {
         android: true,
       },
     },
+    'react-native-get-random-values': {
+      platforms: {
+        android: true,
+      }
+    }
   },
 };

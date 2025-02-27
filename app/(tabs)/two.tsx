@@ -1,18 +1,11 @@
-import { StyleSheet } from "react-native";
+import { Button, StyleSheet } from "react-native";
 
 import EditScreenInfo from "@/components/EditScreenInfo";
 import { Text, View } from "@/components/Themed";
 
-import { getService } from "../../utilities/hps";
+import { Localiser } from "../../hps";
 
-getService()
-  .then((model) => {
-    // model.logger("testing", "Hello!");
-    model.pull();
-  })
-  .catch((e) => {
-    console.log("error", e);
-  });
+const localiser = new Localiser();
 
 export default function TabTwoScreen() {
   return (
@@ -20,6 +13,10 @@ export default function TabTwoScreen() {
       <Text style={styles.title}>Tab Two</Text>
       <View style={styles.separator} lightColor="#eee" darkColor="rgba(255,255,255,0.1)" />
       <EditScreenInfo path="app/(tabs)/two.tsx" />
+      <View style={styles.button}>
+        <Button title="Measure and Save" onPress={() => localiser.measureAndSave()}/>
+        <Button title="Where Am I" onPress={() => localiser.whereAmI()}/>
+      </View>
     </View>
   );
 }
@@ -39,4 +36,9 @@ const styles = StyleSheet.create({
     height: 1,
     width: '80%',
   },
+  button: {
+    flex: 1,
+    alignItems: "center",
+    gap: 20,
+  }
 });
