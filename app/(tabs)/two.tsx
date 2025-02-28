@@ -1,23 +1,21 @@
 import { Platform, StyleSheet } from "react-native";
 
-import EditScreenInfo from "@/components/EditScreenInfo";
 import { Text, View } from "@/components/Themed";
 
 import {
   Canvas,
   Group,
-  listFontFamilies,
   matchFont,
   Rect,
   Text as SkiaText,
 } from "@shopify/react-native-skia";
 
-const fontFamily = Platform.select({ ios: "Helvetica", default: "serif" });
+const fontFamily = Platform.select({ ios: "Helvetica", default: "sans-serif" });
 const fontStyle = {
   fontFamily,
   fontSize: 14,
-  fontStyle: "italic",
-  fontWeight: "bold",
+  fontStyle: "normal",
+  fontWeight: "normal",
 } as const;
 const font = matchFont(fontStyle);
 
