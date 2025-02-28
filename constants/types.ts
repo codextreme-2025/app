@@ -16,9 +16,17 @@ export interface Room extends BaseNode {
   size: [number, number];
 }
 
+export enum Orientation {
+  UP,
+  DOWN,
+  LEFT,
+  RIGHT,
+}
+
 export interface Stair extends BaseNode {
   type: "stair";
   name: string;
+  orientation?: Orientation;
   position: [number, number];
   size: [number, number];
 }
