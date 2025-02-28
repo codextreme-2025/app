@@ -1,4 +1,4 @@
-import { Building, Orientation, Room, Stair } from "./types";
+import { Building, Orientation, Room, Stair, Wall } from "./types";
 
 export const classes: Room[] = [
   {
@@ -26,14 +26,14 @@ export const classes: Room[] = [
     type: "room",
     name: "Gambia",
     subType: "classroom",
-    position: [0, 600],
+    position: [0, 500],
     size: [100, 100],
   },
   {
     type: "room",
     name: "Liberia",
     subType: "classroom",
-    position: [100, 600],
+    position: [100, 500],
     size: [100, 100],
   },
 ];
@@ -56,10 +56,10 @@ export const buildings: Building[] = [
       [200, 100],
       [200, 0],
       [400, 0],
-      [400, 500],
-      [200, 500],
-      [200, 700],
-      [0, 700],
+      [400, 400],
+      [200, 400],
+      [200, 600],
+      [0, 600],
     ],
   },
 ];
@@ -69,7 +69,7 @@ export const libraries: Room[] = [
     type: "room",
     subType: "library",
     name: "Resource Center",
-    position: [0, 400],
+    position: [0, 300],
     size: [100, 100],
   },
 ];
@@ -84,7 +84,7 @@ export const stairs: Stair[] = [
   {
     type: "stair",
     name: "Stairs to reception",
-    position: [100, 420],
+    position: [100, 320],
     size: [20, 80],
     orientation: Orientation.RIGHT,
   },
@@ -92,11 +92,18 @@ export const stairs: Stair[] = [
   {
     type: "stair",
     name: "Stairs to Benin",
-    position: [100, 540],
+    position: [100, 440],
     size: [20, 80],
     orientation: Orientation.LEFT,
   },
 ];
+
+// export const walls: Wall[] = [
+//   {
+//     type: "wall",
+//     name: ""
+//   }
+// ]
 
 export const allRooms = [
   ...classes,
