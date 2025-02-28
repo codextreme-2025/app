@@ -39,4 +39,10 @@ export interface Wall extends BaseNode {
   via?: [number, number][];
 }
 
-export type Node = Room | Building | Stair | Wall;
+export interface Hole extends BaseNode {
+  type: "hole";
+  name: string;
+  path: [number, number][];
+}
+
+export type Node = Room | Building | Stair | Wall | Wall | Hole;

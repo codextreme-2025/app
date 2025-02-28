@@ -5,6 +5,7 @@ import { BuildingRenderer } from "./Building";
 import { StairRenderer } from "./Stair";
 import { ReactNode } from "react";
 import { WallRenderer } from "./Wall";
+import { HoleRenderer } from "./Hole";
 
 export interface NodeRendererProps<N extends BaseNode = Node> {
   node: N;
@@ -18,6 +19,7 @@ const renderers = new Map<
   ["building", BuildingRenderer],
   ["stair", StairRenderer],
   ["wall", WallRenderer],
+  ["hole", HoleRenderer],
 ]);
 
 export function NodeRenderer({ node }: NodeRendererProps) {

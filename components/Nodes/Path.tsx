@@ -3,9 +3,16 @@ import { Path, Skia } from "@shopify/react-native-skia";
 export interface PathRendererProps {
   path: [number, number][];
   closePath?: boolean;
+  style?: "stroke" | "fill";
+  color?: string;
 }
 
-export function PathRenderer({ path, closePath }: PathRendererProps) {
+export function PathRenderer({
+  path,
+  closePath,
+  style = "stroke",
+  color = "black"
+}: PathRendererProps) {
   const skiaPath = Skia.Path.Make();
 
   if (path) {
@@ -25,8 +32,8 @@ export function PathRenderer({ path, closePath }: PathRendererProps) {
   return (
     <Path
       path={skiaPath}
-      color="black"
-      style="stroke"
+      color={color}
+      style={style}
       strokeWidth={3}
     />
   );
