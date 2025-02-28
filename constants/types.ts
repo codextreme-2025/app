@@ -31,4 +31,12 @@ export interface Stair extends BaseNode {
   size: [number, number];
 }
 
-export type Node = Room | Building | Stair;
+export interface Wall extends BaseNode {
+  type: "wall";
+  name: string;
+  from: [number, number];
+  to: [number, number];
+  via?: [number, number][];
+}
+
+export type Node = Room | Building | Stair | Wall;

@@ -53,6 +53,9 @@ export const buildings: Building[] = [
     type: "building",
     path: [
       [0, 100],
+      [100, 100],
+      [100, 200],
+      [200, 200],
       [200, 100],
       [200, 0],
       [400, 0],
@@ -98,12 +101,35 @@ export const stairs: Stair[] = [
   },
 ];
 
-// export const walls: Wall[] = [
-//   {
-//     type: "wall",
-//     name: ""
-//   }
-// ]
+export const walls: Wall[] = [
+  {
+    type: "wall",
+    name: "Wall in front of Liberia",
+    from: [200, 400],
+    via: [
+      [120, 400],
+      [100, 420],
+      [120, 400],
+    ],
+    to: [100, 420],
+  },
+  {
+    type: "wall",
+    name: "Wall that separates leadership center",
+    from: [340, 120],
+    via: [
+      [340, 300],
+      [180, 300],
+    ],
+    to: [180, 320],
+  },
+  {
+    type: "wall",
+    name: "Wall in front of Mozambique",
+    from: [250, 200],
+    to: [340, 200],
+  },
+];
 
 export const allRooms = [
   ...classes,
@@ -111,4 +137,5 @@ export const allRooms = [
   ...buildings,
   ...libraries,
   ...stairs,
+  ...walls,
 ];
