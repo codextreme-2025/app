@@ -2,21 +2,23 @@ import { StyleSheet } from "react-native";
 
 import { Text, View } from "@/components/Themed";
 
-import { allRooms } from "@/constants/floors/social/one";
-import { NodeRenderer } from "@/components/Nodes/Renderer";
 import { SkiaPanningZooming } from "@/components/PanZoom";
+
+import { campus } from "@/constants/Campus";
+import { FloorRenderer } from "@/components/map/floor";
 
 export default function MapScreen() {
   const width = 400;
   const height = 700;
 
+  const firstBuilding = campus.buildings[0];
+  const firstFloor = firstBuilding.floors[0];
+
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Entreprise Commons</Text>
       <SkiaPanningZooming width={width} height={height}>
-        {allRooms.map((node) => {
-          return <NodeRenderer key={node.type + "-" + node.name} node={node} />;
-        })}
+        <FloorRenderer node={firstFloor} stairs={firstBuilding.stairs ?? []} />
       </SkiaPanningZooming>
     </View>
   );
