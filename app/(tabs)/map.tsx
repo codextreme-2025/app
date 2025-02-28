@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 import { Text, View } from "@/components/Themed";
 
-import { allRooms } from "@/constants/plan";
+import { allRooms } from "@/constants/floors/social/one";
 import { NodeRenderer } from "@/components/Nodes/Renderer";
 import { SkiaPanningZooming } from "@/components/PanZoom";
 

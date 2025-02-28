@@ -1,4 +1,11 @@
-import { Building, Hole, Orientation, Room, Stair, Wall } from "./types";
+import {
+  Building,
+  Hole,
+  Orientation,
+  Room,
+  Stair,
+  Wall,
+} from "@/constants/types";
 
 export const classes: Room[] = [
   {
@@ -133,8 +140,8 @@ export const walls: Wall[] = [
     type: "wall",
     name: "Wall in front of Malawi",
     from: [360, 120],
-    to: [400, 120]
-  }
+    to: [400, 120],
+  },
 ];
 
 export const holes: Hole[] = [
@@ -159,16 +166,10 @@ export const holes: Hole[] = [
       [200, 400],
       [200, 500],
       [100, 500],
-    ]
-  }
+    ],
+  },
 ];
 
 export const allRooms = [
   ...classes,
-  ...toilets,
-  ...buildings,
-  ...libraries,
-  ...stairs,
-  ...walls,
-  ...holes,
 ];

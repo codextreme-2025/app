@@ -15,6 +15,8 @@ export function RoomRenderer({ node: room }: NodeRendererProps<Room>) {
     ? "pink"
     : room.subType === "toilet"
     ? "violet"
+    : room.subType === "office"
+    ? "yellow"
     : "chocolate";
 
   return (
