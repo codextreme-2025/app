@@ -1,48 +1,100 @@
+export type Coordinates = [number, number];
+export type Size = [number, number];
+export type Orientation = "vertical" | "horizontal";
+
 export interface BaseNode {
   type: string;
+  id: string;
   name?: string;
-  path?: [number, number][];
+}
+
+export interface Campus extends BaseNode {
+  type: "campus";
+  buildings: Building[];
 }
 
 export interface Building extends BaseNode {
   type: "building";
+  offset?: Coordinates;
+  floors: Floor[];
+  elevators?: Elevator[];
+  stairs?: Stair[];
 }
 
-export interface Room extends BaseNode {
-  type: "room";
+export interface Floor extends BaseNode {
+  type: "floor";
+  level: number;
+  offset?: Coordinates;
+  spaces: Space[];
+  walls?: Wall[];
+  holes?: Hole[];
+  path: Coordinates[];
+}
+
+export interface BaseSpace extends BaseNode {
+  type: "space";
   name: string;
-  subType?: "classroom" | "toilet" | "library" | "office";
-  position: [number, number];
-  size: [number, number];
+  spaceType?: "room" | "open";
+  subType?:
+    | "classroom"
+    | "toilet"
+    | "library"
+    | "office"
+    | "hallway"
+    | "wellness";
+
+  entrances?: PathNode[];
 }
 
-export enum Orientation {
-  UP,
-  DOWN,
-  LEFT,
-  RIGHT,
+export interface RectSpace extends BaseSpace {
+  position: Coordinates;
+  size: Size;
 }
+
+export interface FreeSpace extends BaseSpace {
+  path: Coordinates[];
+}
+
+export type Space = RectSpace | FreeSpace;
 
 export interface Stair extends BaseNode {
   type: "stair";
-  name: string;
+  position: Coordinates;
+  length: number;
   orientation?: Orientation;
-  position: [number, number];
-  size: [number, number];
+  floors: number[];
+}
+
+export interface Elevator extends BaseNode {
+  type: "elevator";
+  position: Coordinates;
+  width: number;
+  floors: number[];
 }
 
 export interface Wall extends BaseNode {
   type: "wall";
-  name: string;
-  from: [number, number];
-  to: [number, number];
-  via?: [number, number][];
+  path: Coordinates[];
 }
 
 export interface Hole extends BaseNode {
   type: "hole";
-  name: string;
-  path: [number, number][];
+  path: Coordinates[];
 }
 
-export type Node = Room | Building | Stair | Wall | Wall | Hole;
+export interface PathNode extends BaseNode {
+  type: "path";
+  position: Coordinates[];
+  connectedEdges: PathEdge[];
+}
+
+export interface PathEdge extends BaseNode {
+  type: "edge";
+  from: string;
+  to: string;
+  distance: number;
+}
+
+export interface NodeRendererProps<N extends BaseNode = BaseNode> {
+  node: N;
+}

@@ -1,6 +1,6 @@
 import { Group } from "@shopify/react-native-skia";
 
-import { Building, Floor, NodeRenderer2Props, Stair } from "@/constants/types2";
+import { Building, Floor, NodeRendererProps } from "@/constants/types";
 
 import { PathRenderer } from "./path";
 import { SpaceRenderer } from "./space";
@@ -8,7 +8,7 @@ import { StairRenderer } from "./stair";
 import { WallRenderer } from "./wall";
 import { HoleRenderer } from "./hole";
 
-export interface FloorRendererProps extends NodeRenderer2Props<Floor> {
+export interface FloorRendererProps extends NodeRendererProps<Floor> {
   building: Building;
 }
 

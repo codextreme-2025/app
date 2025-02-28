@@ -1,8 +1,8 @@
 import { Group } from "@shopify/react-native-skia";
 
-import { Building, NodeRenderer2Props } from "@/constants/types2";
+import { Building, NodeRendererProps } from "@/constants/types";
 
-export function BuildingRenderer({ node }: NodeRenderer2Props<Building>) {
+export function BuildingRenderer({ node }: NodeRendererProps<Building>) {
   return (
     <Group
       blendMode="multiply"

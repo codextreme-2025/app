@@ -1,4 +1,4 @@
-import { Campus } from "./types2";
+import { Campus } from "./types";
 
 export const campus: Campus = {
   id: "alu",
@@ -251,7 +251,7 @@ export const campus: Campus = {
               ],
             },
           ],
-        }
+        },
       ],
       stairs: [
         {

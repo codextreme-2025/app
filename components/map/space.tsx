@@ -1,6 +1,6 @@
 import { Group, Rect, Text } from "@shopify/react-native-skia";
 
-import { NodeRenderer2Props, RectSpace, Space } from "@/constants/types2";
+import { NodeRendererProps, RectSpace, Space } from "@/constants/types";
 
 import { font } from "./font";
 import { PathRenderer } from "./path";
@@ -17,7 +17,7 @@ const nodeColorMap = new Map<Space["subType"], string>([
   ["wellness", "green"],
 ]);
 
-export function SpaceRenderer({ node }: NodeRenderer2Props<Space>) {
+export function SpaceRenderer({ node }: NodeRendererProps<Space>) {
   let x: number, y: number, width: number, height: number;
 
   if (isRectSpace(node)) {

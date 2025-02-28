@@ -1,7 +1,8 @@
 import { Group, Line, Rect } from "@shopify/react-native-skia";
-import { NodeRenderer2Props, Stair } from "@/constants/types2";
 
-export function StairRenderer({ node }: NodeRenderer2Props<Stair>) {
+import { NodeRendererProps, Stair } from "@/constants/types";
+
+export function StairRenderer({ node }: NodeRendererProps<Stair>) {
   const [x, y] = node.position;
   const width = 20;
   const length = node.length;

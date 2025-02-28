@@ -1,6 +1,6 @@
 import { Path, Skia } from "@shopify/react-native-skia";
 
-import { Coordinates } from "@/constants/types2";
+import { Coordinates } from "@/constants/types";
 
 export interface PathRendererProps {
   path: Coordinates[];
