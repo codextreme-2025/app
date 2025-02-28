@@ -79,7 +79,6 @@ export interface Wall extends BaseNode {
 
 export interface Hole extends BaseNode {
   type: "hole";
-  position: Coordinates;
   path: Coordinates[];
 }
 

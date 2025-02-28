@@ -12,13 +12,16 @@ export default function MapScreen() {
   const height = 700;
 
   const firstBuilding = campus.buildings[0];
-  const firstFloor = firstBuilding.floors[0];
+  const firstFloor = firstBuilding.floors[1];
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Entreprise Commons</Text>
       <SkiaPanningZooming width={width} height={height}>
-        <FloorRenderer node={firstFloor} stairs={firstBuilding.stairs ?? []} />
+        <FloorRenderer
+          node={firstFloor}
+          building={firstBuilding}
+        />
       </SkiaPanningZooming>
     </View>
   );
