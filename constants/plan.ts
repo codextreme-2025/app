@@ -84,6 +84,14 @@ export const stairs: Stair[] = [
   {
     type: "stair",
     name: "Stairs to reception",
+    position: [100, 420],
+    size: [20, 80],
+    orientation: Orientation.RIGHT,
+  },
+
+  {
+    type: "stair",
+    name: "Stairs to Benin",
     position: [100, 540],
     size: [20, 80],
     orientation: Orientation.LEFT,
