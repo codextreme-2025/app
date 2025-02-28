@@ -11,7 +11,7 @@ export interface Building extends BaseNode {
 export interface Room extends BaseNode {
   type: "room";
   name: string;
-  subType?: "classroom" | "toilet";
+  subType?: "classroom" | "toilet" | "library";
   position: [number, number];
   size: [number, number];
 }

@@ -64,8 +64,19 @@ export const buildings: Building[] = [
   },
 ];
 
+export const libraries: Room[] = [
+  {
+    type: "room",
+    subType: "library",
+    name: "Resource Center",
+    position: [0, 300],
+    size: [100, 100],
+  },
+];
+
 export const allRooms = [
   ...classes,
   ...toilets,
   ...buildings,
+  ...libraries,
 ];

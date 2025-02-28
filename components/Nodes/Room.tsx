@@ -11,7 +11,11 @@ export function RoomRenderer({ node: room }: NodeRendererProps<Room>) {
 
   const textSize = font.measureText(room.name);
 
-  const color = room.subType === "classroom" ? "pink" : "violet";
+  const color = room.subType === "classroom"
+    ? "pink"
+    : room.subType === "toilet"
+    ? "violet"
+    : "chocolate";
 
   return (
     <Group key={room.name} blendMode="multiply">
