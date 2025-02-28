@@ -30,7 +30,7 @@ export interface Building extends Node {
 export interface Room extends Node {
   type: "room";
   name: string;
-  subType?: "classroom";
+  subType?: "classroom" | "toilet";
   position: [number, number];
   size: [number, number];
 }
@@ -57,31 +57,62 @@ export const classes: Room[] = [
     position: [300, 0],
     size: [100, 100],
   },
+  {
+    type: "room",
+    name: "Gambia",
+    subType: "classroom",
+    position: [0, 500],
+    size: [100, 100],
+  },
+  {
+    type: "room",
+    name: "Liberia",
+    subType: "classroom",
+    position: [100, 500],
+    size: [100, 100],
+  },
+];
+
+export const toilets: Room[] = [
+  {
+    type: "room",
+    name: "Toilets",
+    subType: "toilet",
+    position: [180, 100],
+    size: [140, 50],
+  },
+];
+
+const allRooms = [
+  ...classes,
+  ...toilets,
 ];
 
 export default function MapScreen() {
   const width = 400;
-  const height = 400;
+  const height = 700;
   const r = width * 0.33;
 
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Entreprise Commons</Text>
       <Canvas style={{ width, height }}>
-        {classes.map((classRoom) => {
-          const [x, y] = classRoom.position;
-          const [width, height] = classRoom.size;
+        {allRooms.map((room) => {
+          const [x, y] = room.position;
+          const [width, height] = room.size;
 
-          const textSize = font.measureText(classRoom.name);
+          const textSize = font.measureText(room.name);
+
+          const color = room.subType === "classroom" ? "pink" : "violet";
 
           return (
-            <Group key={classRoom.name} blendMode="multiply">
+            <Group key={room.name} blendMode="multiply">
               <Rect
                 x={x}
                 y={y}
                 width={width}
                 height={height}
-                color="pink"
+                color={color}
                 style="fill"
               />
               <Rect
@@ -97,7 +128,7 @@ export default function MapScreen() {
                 font={font}
                 x={x + (width / 2 - textSize.width / 2)}
                 y={y + (height / 2 + textSize.height / 2)}
-                text={classRoom.name}
+                text={room.name}
               />
             </Group>
           );
