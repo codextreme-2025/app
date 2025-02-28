@@ -26,14 +26,14 @@ export const classes: Room[] = [
     type: "room",
     name: "Gambia",
     subType: "classroom",
-    position: [0, 500],
+    position: [0, 600],
     size: [100, 100],
   },
   {
     type: "room",
     name: "Liberia",
     subType: "classroom",
-    position: [100, 500],
+    position: [100, 600],
     size: [100, 100],
   },
 ];
