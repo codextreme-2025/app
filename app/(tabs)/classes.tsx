@@ -15,11 +15,8 @@ export default function App() {
           const availableCalendars = await Calendar.getCalendarsAsync(Calendar.EntityTypes.EVENT);
           setCalendars(availableCalendars);
 
-          // Option: Pick the first calendar to fetch events from
-          // TODO: refactor to make calender with student email as the primary calendar
-
-          if (availableCalendars.length > 0) {
-            const calendarId = availableCalendars[0].id;
+          for (const calendar of availableCalendars) {
+            const calendarId = calendar.id;
             // Define the time range for events
             const now = new Date();
             const oneMonthLater = new Date();
