@@ -16,4 +16,11 @@ export interface Room extends BaseNode {
   size: [number, number];
 }
 
-export type Node = Room | Building;
+export interface Stair extends BaseNode {
+  type: "stair";
+  name: string;
+  position: [number, number];
+  size: [number, number];
+}
+
+export type Node = Room | Building | Stair;

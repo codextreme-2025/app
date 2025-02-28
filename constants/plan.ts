@@ -1,4 +1,4 @@
-import { Building, Room } from "./types";
+import { Building, Room, Stair } from "./types";
 
 export const classes: Room[] = [
   {
@@ -74,9 +74,19 @@ export const libraries: Room[] = [
   },
 ];
 
+export const stairs: Stair[] = [
+  {
+    type: "stair",
+    name: "Stairs in front of Malawi",
+    position: [340, 120],
+    size: [20, 80],
+  },
+];
+
 export const allRooms = [
   ...classes,
   ...toilets,
   ...buildings,
   ...libraries,
+  ...stairs,
 ];
