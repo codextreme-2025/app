@@ -43,7 +43,7 @@ export const toilets: Room[] = [
     type: "room",
     name: "Toilets",
     subType: "toilet",
-    position: [180, 100],
+    position: [80, 200],
     size: [140, 50],
   },
 ];
