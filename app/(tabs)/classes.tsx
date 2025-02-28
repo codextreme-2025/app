@@ -3,8 +3,8 @@ import { StyleSheet, View, Text, Button, Platform, FlatList } from 'react-native
 import * as Calendar from 'expo-calendar';
 
 export default function App() {
-  const [calendars, setCalendars] = useState([]);
-  const [events, setEvents] = useState([]);
+  const [calendars, setCalendars] = useState<Calendar.Calendar[]>([]);
+  const [events, setEvents] = useState<Calendar.Event[]>([]);
 
   useEffect(() => {
     (async () => {
@@ -19,7 +19,7 @@ export default function App() {
           // TODO: refactor to make calender with student email as the primary calendar
 
           if (availableCalendars.length > 0) {
-            const calendarId = availableCalendars[1].id;
+            const calendarId = availableCalendars[0].id;
             // Define the time range for events
             const now = new Date();
             const oneMonthLater = new Date();
@@ -51,7 +51,7 @@ export default function App() {
       <Text style={styles.subHeader}>Calendar Events:</Text>
       <FlatList
         data={events}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={(item: Calendar.Event) => item.id.toString()}
         renderItem={({ item }) => (
           <View style={styles.eventItem}>
             <Text style={styles.eventTitle}>{item.title || "No Title"}</Text>
@@ -72,28 +72,6 @@ export default function App() {
 async function getDefaultCalendarSource() {
   const defaultCalendar = await Calendar.getDefaultCalendarAsync();
   return defaultCalendar.source;
-}
-
-async function createCalendar() {
-  const defaultCalendarSource =
-    Platform.OS === 'ios'
-      ? await getDefaultCalendarSource()
-      : { isLocalAccount: true, name: 'Expo Calendar' };
-  try {
-    const newCalendarID = await Calendar.createCalendarAsync({
-      title: 'Expo Calendar',
-      color: 'blue',
-      entityType: Calendar.EntityTypes.EVENT,
-      sourceId: defaultCalendarSource.id,
-      source: defaultCalendarSource,
-      name: 'internalCalendarName',
-      ownerAccount: 'personal',
-      accessLevel: Calendar.CalendarAccessLevel.OWNER,
-    });
-    console.log(`Your new calendar ID is: ${newCalendarID}`);
-  } catch (error) {
-    console.error("Error creating calendar: ", error);
-  }
 }
 
 const styles = StyleSheet.create({
