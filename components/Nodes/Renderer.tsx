@@ -3,20 +3,27 @@ import { BaseNode, Node } from "@/constants/types";
 import { RoomRenderer } from "./Room";
 import { BuildingRenderer } from "./Building";
 import { StairRenderer } from "./Stair";
+import { ReactNode } from "react";
 
 export interface NodeRendererProps<N extends BaseNode = Node> {
   node: N;
 }
 
+const renderers = new Map<
+  Node["type"],
+  (props: NodeRendererProps<any>) => ReactNode
+>([
+  ["room", RoomRenderer],
+  ["building", BuildingRenderer],
+  ["stair", StairRenderer],
+]);
+
 export function NodeRenderer({ node }: NodeRendererProps) {
-  switch (node.type) {
-    case "room":
-      return <RoomRenderer node={node} />;
-    case "building":
-      return <BuildingRenderer node={node} />;
-    case "stair":
-      return <StairRenderer node={node} />;
-    default:
-      return null;
+  const Renderer = renderers.get(node.type);
+
+  if (Renderer) {
+    return <Renderer node={node} />;
   }
+
+  return null;
 }
