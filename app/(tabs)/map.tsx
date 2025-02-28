@@ -59,19 +59,14 @@ export const classes: Room[] = [
   },
 ];
 
-export default function TabTwoScreen() {
+export default function MapScreen() {
   const width = 400;
   const height = 400;
   const r = width * 0.33;
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
-      />
+      <Text style={styles.title}>Entreprise Commons</Text>
       <Canvas style={{ width, height }}>
         {classes.map((classRoom) => {
           const [x, y] = classRoom.position;
@@ -80,7 +75,7 @@ export default function TabTwoScreen() {
           const textSize = font.measureText(classRoom.name);
 
           return (
-            <Group blendMode="multiply">
+            <Group key={classRoom.name} blendMode="multiply">
               <Rect
                 x={x}
                 y={y}
@@ -117,6 +112,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    gap: 20,
   },
   title: {
     fontSize: 20,
