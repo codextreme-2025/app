@@ -1,4 +1,4 @@
-import { Room } from "./types";
+import { Building, Room } from "./types";
 
 export const classes: Room[] = [
   {
@@ -48,7 +48,24 @@ export const toilets: Room[] = [
   },
 ];
 
+export const buildings: Building[] = [
+  {
+    type: "building",
+    path: [
+      [0, 100],
+      [200, 100],
+      [200, 0],
+      [400, 0],
+      [400, 600],
+      [200, 600],
+      [200, 700],
+      [0, 700],
+    ],
+  },
+];
+
 export const allRooms = [
   ...classes,
   ...toilets,
+  ...buildings,
 ];

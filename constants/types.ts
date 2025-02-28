@@ -1,6 +1,7 @@
 export interface BaseNode {
   type: string;
   name?: string;
+  path?: [number, number][];
 }
 
 export interface Building extends BaseNode {

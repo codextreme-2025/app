@@ -28,7 +28,7 @@ export function RoomRenderer({ node: room }: NodeRendererProps<Room>) {
         y={y}
         width={width}
         height={height}
-        color="black"
+        color="gray"
         style="stroke"
         strokeWidth={2}
       />
