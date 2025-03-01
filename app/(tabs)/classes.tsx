@@ -28,7 +28,9 @@ export default function App() {
               now,
               oneMonthLater
             );
-            setEvents(calendarEvents);
+            if (calendarEvents.length) {
+              setEvents(calendarEvents);
+            }
           }
         }
         else{
@@ -48,7 +50,7 @@ export default function App() {
       <Text style={styles.subHeader}>Calendar Events:</Text>
       <FlatList
         data={events}
-        keyExtractor={(item: Calendar.Event) => item.id.toString()}
+        keyExtractor={(item: Calendar.Event) => item.calendarId + item.instanceId + item.id}
         renderItem={({ item }) => (
           <View style={styles.eventItem}>
             <Text style={styles.eventTitle}>{item.title || "No Title"}</Text>
