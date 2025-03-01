@@ -8,7 +8,7 @@ export default function TabOneScreen() {
   const navigation = useNavigation(); // Get navigation instance
 
   const groq = new Groq({
-    apiKey: "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",
+    apiKey: "API_KEY",
     dangerouslyAllowBrowser: true,
   });
 
