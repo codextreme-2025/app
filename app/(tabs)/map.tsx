@@ -6,6 +6,7 @@ import { SkiaPanningZooming } from "@/components/PanZoom";
 
 import { campus } from "@/constants/Campus";
 import { FloorRenderer } from "@/components/map/floor";
+import { PathRenderer } from "@/components/map/path";
 
 export default function MapScreen() {
   const width = 400;
@@ -21,6 +22,20 @@ export default function MapScreen() {
         <FloorRenderer
           node={firstFloor}
           building={firstBuilding}
+        />
+        <PathRenderer
+          path={[
+            [100, -50],
+            [190, -50],
+            [190, 10],
+            [330, 10],
+            [330, 130],
+            [490, 130],
+            [490, 250],
+            [510, 250],
+          ]}
+          color="green"
+          dotted
         />
       </SkiaPanningZooming>
     </View>

@@ -7,6 +7,7 @@ export interface PathRendererProps {
   closePath?: boolean;
   style?: "stroke" | "fill";
   color?: string;
+  dotted?: boolean;
 }
 
 export function PathRenderer({
@@ -14,6 +15,7 @@ export function PathRenderer({
   closePath,
   style = "stroke",
   color = "black",
+  dotted,
 }: PathRendererProps) {
   const skiaPath = Skia.Path.Make();
 
@@ -25,6 +27,10 @@ export function PathRenderer({
         skiaPath.lineTo(x, y);
       }
     });
+  }
+
+  if (dotted) {
+    skiaPath.dash(6, 8, 0);
   }
 
   if (closePath) {
