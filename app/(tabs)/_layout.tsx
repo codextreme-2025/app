@@ -77,6 +77,29 @@ export default function TabLayout() {
         }
       }
       />
+    <Tabs.Screen
+      name='classes'
+      options={
+        {
+          title: 'Classes',
+          tabBarIcon: ({ color }) => <TabBarIcon name="graduation-cap" color={color} />,
+          headerRight: () => (
+            <Link href="/modal" asChild>
+              <Pressable>
+                {({ pressed }) => (
+                  <FontAwesome
+                    name="user"
+                    size={25}
+                    color={Colors[colorScheme ?? 'light'].text}
+                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
+                  />
+                )}
+              </Pressable>
+            </Link>
+          ),
+        }
+      }
+      />
     </Tabs>
   );
 }

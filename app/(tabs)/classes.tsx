@@ -47,7 +47,7 @@ export default function App() {
       {/* <Text style={styles.header}>Calendar Module Example</Text> */}
       {/* <Button title="Create a new calendar" onPress={createCalendar} /> */}
 
-      <Text style={styles.subHeader}>Calendar Events:</Text>
+      <Text style={styles.subHeader}>Upcoming classes</Text>
       <FlatList
         data={events}
         keyExtractor={(item: Calendar.Event) => item.calendarId + item.instanceId + item.id}
@@ -62,7 +62,7 @@ export default function App() {
             <Text style = {styles.eventLocation}>{item.location || "No Location"}</Text>
           </View>
         )}
-        ListEmptyComponent={<Text>No events found for this period.</Text>}
+        ListEmptyComponent={<Text>You have no upcoming classes</Text>}
       />
     </View>
   );
