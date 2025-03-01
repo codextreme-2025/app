@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet, View, Text, Button, Platform, FlatList } from 'react-native';
 import * as Calendar from 'expo-calendar';
+import { Link } from 'expo-router';
 
 export default function App() {
   const [calendars, setCalendars] = useState<Calendar.Calendar[]>([]);
@@ -52,6 +53,7 @@ export default function App() {
         data={events}
         keyExtractor={(item: Calendar.Event) => item.calendarId + item.instanceId + item.id}
         renderItem={({ item }) => (
+          <Link href={"/map"}>
           <View style={styles.eventItem}>
             <Text style={styles.eventTitle}>{item.title || "No Title"}</Text>
             <View style ={styles.timestampsView}>
@@ -61,6 +63,7 @@ export default function App() {
             </View>
             <Text style = {styles.eventLocation}>{item.location || "No Location"}</Text>
           </View>
+          </Link>
         )}
         ListEmptyComponent={<Text>You have no upcoming classes</Text>}
       />
